@@ -9,9 +9,17 @@ const TemplateTasksRouter = require("./data/templates-tasks/templates-tasks.rout
 
 const server = express();
 
+function logger(req, res, next) {
+  const url = req.url;
+  const method = req.method;
+  console.log(`There was a ${method} on ${url}`);
+  next();
+}
+
 server.use(cors());
 server.use(helmet());
 server.use(express.json());
+server.use(logger);
 server.use("/users", UsersRouter);
 server.use("/projects", ProjectsRouter);
 server.use("/projects/tasks", TasksRouter);
