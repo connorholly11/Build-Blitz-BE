@@ -28,6 +28,13 @@ function deleteTask(id) {
     .del();
 }
 
+// function getTasksByProject(project_id) {
+//   return db("tasks").where("project_id", "=", project_id);
+// }
+
 function getTasksByProject(project_id) {
-  return db("tasks").where("project_id", "=", project_id);
+  return db("tasks")
+    .join("projects", "tasks.project_id", "=", "projects.id")
+    .select("projects.*", "tasks.*")
+    .where("tasks.project_id", "=", project_id);
 }
