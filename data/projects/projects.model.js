@@ -2,6 +2,7 @@ const db = require("../db.config");
 
 module.exports = {
   getProjects,
+  getProjectById,
   addProject,
   editProject,
   deleteProject
@@ -9,6 +10,10 @@ module.exports = {
 
 function getProjects() {
   return db("projects");
+}
+
+function getProjectById(id) {
+  return db("projects").where("id", "=", id);
 }
 
 function addProject(newProject) {
