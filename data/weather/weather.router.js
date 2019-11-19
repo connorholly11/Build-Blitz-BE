@@ -49,4 +49,5 @@ router.get("/weather/:zipcode", (req, res) => {
       console.log(err);
     });
 });
+
 module.exports = router;
