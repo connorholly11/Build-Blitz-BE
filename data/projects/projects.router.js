@@ -1,6 +1,5 @@
 const express = require("express");
 const db = require("./projects.model");
-const zipcodes = require("zipcodes");
 
 const router = express.Router();
 
