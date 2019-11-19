@@ -17,6 +17,7 @@ function logger(req, res, next) {
   next();
 }
 
+//notes
 server.use(cors());
 server.use(helmet());
 server.use(express.json());
