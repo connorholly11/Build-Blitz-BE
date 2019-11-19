@@ -1,5 +1,6 @@
 const express = require("express");
 const db = require("./projects.model");
+const zipcodes = require("zipcodes");
 
 const router = express.Router();
 
@@ -37,6 +38,10 @@ router.post("/", (req, res) => {
   db.addProject(newProject)
     .then(project => {
       res.status(201).json(project);
+      zipcodes.lookup(req.body.zip_code);
+      project.latitude = cords.latitude;
+      project.longitude = cords.longitude;
+      console.log(project);
     })
     .catch(error => {
       res.status(500).json({

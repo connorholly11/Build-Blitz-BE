@@ -75,7 +75,9 @@ exports.up = function(knex) {
         tbl.string("state");
         tbl.string("status");
         tbl.string("street_address");
-        tbl.integer("zip_code");
+        tbl.integer("zip_code").notNullable();
+        tbl.integer("latitude");
+        tbl.integer("longitude");
       })
   );
 };
